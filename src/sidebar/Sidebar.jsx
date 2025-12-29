@@ -24,10 +24,12 @@ import {
   IconSchool,
   IconShieldLock,
   IconClockExclamation,
+  IconLogout,
 } from "@tabler/icons-react";
 import classes from "./Sidebar.module.css";
 import logobgrem from "../assets/logobgrem.png"
 import { useState } from "react";
+import { useAdmin } from "../context/AdminContext";
 
 
 const menu = [
@@ -44,6 +46,8 @@ const menu = [
 export default function Sidebar({ active, onSelect, mobileOpen, setMobileOpen, collapsed, setCollapsed }) {
 
   
+  const {logout} = useAdmin();
+
 /* const [collapsed, setCollapsed] = useState(false);
 const [mobileOpen, setMobileOpen] = useState(false); */
 
@@ -99,6 +103,17 @@ const toggleSidebar = () => {
           {!collapsed && <Text ml="sm">{item.label}</Text>}
         </Box>
       ))}
+       <Box
+
+          className={classes.menuItem}
+          onClick={() => {
+            setMobileOpen(false); 
+            logout();
+          }}
+        >
+          <IconLogout color="red" size={22} />
+          {!collapsed && <Text ml="sm">logout</Text>}
+        </Box>
     </Box>
   </Box>
 

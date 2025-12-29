@@ -4,8 +4,31 @@ import { ActionIcon } from "@mantine/core";
 import { IconMenu2 } from "@tabler/icons-react";
 import React from 'react'
 import Sidebar from "./sidebar/Sidebar";
+import { useEffect } from "react";
+import { useAdmin } from "./context/AdminContext";
+import { apiRequest } from "./utils/api";
 
 const Home = () => {
+
+  const {setAdmin , setLoading , admin,setauthenticated  } = useAdmin();
+
+    useEffect(()=>{
+       const restoreSession = async () => {
+      try {
+        const res = await apiRequest('POST', '/api/admin/auth/me');
+        setAdmin(res);
+        setauthenticated(true);
+      } catch {
+        setAdmin(null);
+        setauthenticated(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    restoreSession();
+  
+    },[]);
 
     const navigate = useNavigate();
   const location = useLocation();

@@ -4,7 +4,9 @@ import React, { useState } from 'react'
 
 const Courses = () => {
 
-  const [activeTab, setActiveTab] = useState('marketplace');
+  const [tradingcourses , settradingcourses] = useState([]);
+
+  const [activeTab, setActiveTab] = useState('trading');
 
         const courses = [
     {
@@ -71,14 +73,14 @@ const Courses = () => {
               size="md"
               radius="xl"
               style={{
-                backgroundColor: activeTab === 'marketplace' ? '#000000ff' : 'transparent',
-                color: activeTab === 'marketplace' ? 'white' : '#495057',
+                backgroundColor: activeTab === 'trading' ? '#000000ff' : 'transparent',
+                color: activeTab === 'trading' ? 'white' : '#495057',
                 border: 'none',
                 fontWeight: 500,
                 paddingLeft: '28px',
                 paddingRight: '28px',
               }}
-              onClick={() => setActiveTab('marketplace')}
+              onClick={() => setActiveTab('trading')}
             >
               Trading
             </Button>
@@ -87,14 +89,14 @@ const Courses = () => {
               radius="xl"
               variant="subtle"
               style={{
-                backgroundColor: activeTab === 'myStrategies' ? '#000000ff' : 'transparent',
-                color: activeTab === 'myStrategies' ? 'white' : '#495057',
+                backgroundColor: activeTab === 'core' ? '#000000ff' : 'transparent',
+                color: activeTab === 'core' ? 'white' : '#495057',
                 border: 'none',
                 fontWeight: 500,
                 paddingLeft: '28px',
                 paddingRight: '28px',
               }}
-              onClick={() => setActiveTab('myStrategies')}
+              onClick={() => setActiveTab('core')}
             >
               Core
             </Button>
@@ -263,14 +265,14 @@ const Courses = () => {
               size="md"
               radius="xl"
               style={{
-                backgroundColor: activeTab === 'marketplace' ? '#000000ff' : 'transparent',
-                color: activeTab === 'marketplace' ? 'white' : '#495057',
+                backgroundColor: activeTab === 'trading' ? '#000000ff' : 'transparent',
+                color: activeTab === 'trading' ? 'white' : '#495057',
                 border: 'none',
                 fontWeight: 500,
                 paddingLeft: '28px',
                 paddingRight: '28px',
               }}
-              onClick={() => setActiveTab('marketplace')}
+              onClick={() => setActiveTab('trading')}
             >
               Trading
             </Button>
@@ -279,14 +281,14 @@ const Courses = () => {
               radius="xl"
               variant="subtle"
               style={{
-                backgroundColor: activeTab === 'myStrategies' ? '#000000ff' : 'transparent',
-                color: activeTab === 'myStrategies' ? 'white' : '#495057',
+                backgroundColor: activeTab === 'core' ? '#000000ff' : 'transparent',
+                color: activeTab === 'core' ? 'white' : '#495057',
                 border: 'none',
                 fontWeight: 500,
                 paddingLeft: '28px',
                 paddingRight: '28px',
               }}
-              onClick={() => setActiveTab('myStrategies')}
+              onClick={() => setActiveTab('core')}
             >
               Core
             </Button>
