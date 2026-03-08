@@ -3,6 +3,7 @@ import { MantineProvider } from '@mantine/core';
 import { useAdmin } from './context/AdminContext';
 
 import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
 
 import Home from './Home.jsx';
 import Login from './Login.jsx';
@@ -14,6 +15,7 @@ import Courses from './pages/Courses';
 import Users from './pages/Users';
 import Announcements from './pages/Announcements';
 import Notification from './pages/Notification';
+import Singlecourse from './pages/Singlecourse.jsx';
 
 export default function App() {
   const { admin , authenticated } = useAdmin();
@@ -37,8 +39,8 @@ export default function App() {
               <Route path="users" element={<Users />} />
               <Route path="reports" element={<Reports />} />
               <Route path="admin" element={<Admins />} />
+              <Route path="singlecourse" element={<Singlecourse />} />
               </Route>
-             
             </>
           )}
         </Routes>
@@ -46,3 +48,4 @@ export default function App() {
     </MantineProvider>
   );
 }
+ 

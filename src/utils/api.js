@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const localurl = `http://localhost:5000`
+const cloudurl = `https://dreaminalgo-edubackend-production.up.railway.app`
+
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: "https://dreaminalgo-edubackend-production.up.railway.app",
   withCredentials: true, // 🍪 cookies auto sent
   headers: {
     'Content-Type': 'application/json',
@@ -56,7 +59,7 @@ export const apiRequest = async (
     }
 
     throw new Error(
-      error.response?.data?.message || 'Something went wrong'
+      error || 'Something went wrong'
     );
   }
 };

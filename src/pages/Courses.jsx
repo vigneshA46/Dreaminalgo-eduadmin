@@ -1,10 +1,12 @@
 import { Box, Button, Card, Flex, Grid, Group, Stack, Text, TextInput } from '@mantine/core'
 import { IconClockHour4, IconStar } from '@tabler/icons-react';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Courses = () => {
 
   const [tradingcourses , settradingcourses] = useState([]);
+  const navigation = useNavigate()
 
   const [activeTab, setActiveTab] = useState('trading');
 
@@ -106,7 +108,7 @@ const Courses = () => {
           {courses.map((course) => (
             <Grid.Col key={course.id} span={3}>
               <Card
-
+              onClick={()=>navigation("/singlecourse")}
                 padding={0}
                 radius="lg"
                 style={{
