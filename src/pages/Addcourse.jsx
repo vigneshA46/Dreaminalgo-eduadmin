@@ -12,12 +12,19 @@ import {
   Stack,
   Title,
   Divider,
-  ActionIcon
+  ActionIcon,
+  Notification
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconPlus, IconTrash } from "@tabler/icons-react";
+import { IconPlus, IconTrash, IconCheck, IconX } from "@tabler/icons-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../utils/api";
 
 export default function Addcourse() {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState(null);
 
   const form = useForm({
     initialValues: {
@@ -46,8 +53,25 @@ export default function Addcourse() {
     form.removeListItem("learning", index);
   };
 
-  const handleSubmit = (values) => {
-    console.log("Course Payload:", values);
+  const handleSubmit = async (values) => {
+    setLoading(true);
+    setNotification(null);
+    try {
+      await api.post('/api/courses/', values);
+      setNotification({
+        type: 'success',
+        message: 'Course created successfully! Redirecting...'
+      });
+      setTimeout(() => navigate('/courses'), 2000);
+    } catch (error) {
+      console.error("Course Payload Error:", error);
+      setNotification({
+        type: 'error',
+        message: 'Failed to create course. Please check your connection and try again.'
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -56,6 +80,18 @@ export default function Addcourse() {
       <Title order={2} mb="lg">
         Add New Course
       </Title>
+
+      {notification && (
+        <Notification
+          icon={notification.type === 'success' ? <IconCheck size={20} /> : <IconX size={20} />}
+          color={notification.type === 'success' ? 'teal' : 'red'}
+          title={notification.type === 'success' ? 'Success' : 'Error'}
+          onClose={() => setNotification(null)}
+          mb="lg"
+        >
+          {notification.message}
+        </Notification>
+      )}
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
 
@@ -274,9 +310,10 @@ export default function Addcourse() {
             <Group justify="flex-end">
 
               <Button
-              bg={"#000"}
+                bg={"#000"}
                 size="md"
                 type="submit"
+                loading={loading}
               >
                 Create Course
               </Button>
