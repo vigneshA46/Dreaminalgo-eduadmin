@@ -19,12 +19,12 @@ import {
 } from "@mantine/core";
 import { IconPlus, IconTrash } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import api from "../utils/api";
 
 export default function Singlecourse() {
 
-  // Typically parsed from URL params. Hardcoded based on user request prompt snippet.
-  const courseId = "20ac2df3-b675-4ba2-b5e4-940f58f9ffed";
+  const { id: courseId } = useParams();
 
   const [course, setCourse] = useState(null);
   const [chapters, setChapters] = useState([]);

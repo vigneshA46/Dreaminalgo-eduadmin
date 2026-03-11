@@ -18,7 +18,7 @@ import Notification from './pages/Notification';
 import Singlecourse from './pages/Singlecourse.jsx';
 
 export default function App() {
-  const { admin , authenticated } = useAdmin();
+  const { admin, authenticated } = useAdmin();
 
   return (
     <MantineProvider>
@@ -26,20 +26,20 @@ export default function App() {
         <Routes>
           {!authenticated ? (
             <>
-             <Route path="*" element={<Login />} />
+              <Route path="*" element={<Login />} />
             </>
           ) : (
             <>
-            <Route path="/" element={<Home />}>
-              <Route index element={<Dashboard />} />
-              <Route path="notification" element={<Notification />} />
-              <Route path="courses" element={<Courses />} />
-              <Route path="announcements" element={<Announcements />} />
-              <Route path="addcourse" element={<Addcourse />} />
-              <Route path="users" element={<Users />} />
-              <Route path="reports" element={<Reports />} />
-              <Route path="admin" element={<Admins />} />
-              <Route path="singlecourse" element={<Singlecourse />} />
+              <Route path="/" element={<Home />}>
+                <Route index element={<Dashboard />} />
+                <Route path="notification" element={<Notification />} />
+                <Route path="courses" element={<Courses />} />
+                <Route path="announcements" element={<Announcements />} />
+                <Route path="addcourse" element={<Addcourse />} />
+                <Route path="users" element={<Users />} />
+                <Route path="reports" element={<Reports />} />
+                <Route path="admin" element={<Admins />} />
+                <Route path="singlecourse/:id" element={<Singlecourse />} />
               </Route>
             </>
           )}
@@ -48,4 +48,3 @@ export default function App() {
     </MantineProvider>
   );
 }
- 

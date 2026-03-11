@@ -31,7 +31,7 @@ const Courses = () => {
   const renderCourseCard = (course) => (
     <Grid.Col key={course.id} span={3}>
       <Card
-        onClick={() => navigation("/singlecourse")}
+        onClick={() => navigation(`/singlecourse/${course.id}`)}
         padding={0}
         radius="lg"
         style={{
